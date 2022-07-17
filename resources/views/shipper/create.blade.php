@@ -10,22 +10,13 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                    <!-- <a class="navbar-brand" href="#">Hidden brand</a> -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">E-mail Shipper</a>
-                            <!-- <a class="nav-link active" aria-current="page" href="#">E-mail Shipper :</a> -->
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Create Outlook Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link ">Save and New</a>
                         </li>
                     </ul>
-
                     <form class="d-flex">
-                        <a button class="btn btn-outline-success" href="{{ url('/shippers')}}" type="submit">Close</button></a>
+                        <a button class="btn btn-outline-success" href="{{ route('shipper.index') }}" type="submit">Close</button></a>
                     </form>
 
                 </div>
@@ -82,7 +73,7 @@
             </ul>
         </div>
         @endif
-    <form action=" {{ route('shipper.store') }} " method="POST">
+    <form action=" {{ route('shipper.create') }} " method="POST">
         @csrf
         <div class="card-body">
             <div class="row">
@@ -101,14 +92,14 @@
                     <div class="row mb-3">
                         <label for="firstname" class="col-sm-3 col-form-label">First Name</label>
                         <div class="col-sm-9">
-                            <input type="text" name="first_name" class="form-control" id="firstname">
+                            <input type="text" name="first_name" class="form-control" id="firstname" required>
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <label for="lastname" class="col-sm-3 col-form-label">Last Name</label>
                         <div class="col-sm-9">
-                            <input type="text" name="last_name" class="form-control" id="lastname">
+                            <input type="text" name="last_name" class="form-control" id="lastname" required>
                         </div>
                     </div>
 
@@ -125,21 +116,21 @@
                     <div class="row mb-3">
                         <label for="businessphone" class="col-sm-3 col-form-label">Business Phone</label>
                         <div class="col-sm-9">
-                            <input type="number" name="business_phone" class=" form-control" id="business">
+                            <input type="tel" name="business_phone" class=" form-control" id="business">
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <label for="mobilephone" class="col-sm-3 col-form-label">Mobile Phone</label>
                         <div class="col-sm-9">
-                            <input type="number" name="mobile_phone" class="form-control" id="mobile">
+                            <input type="tel" name="mobile_phone" class="form-control" id="mobile">
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <label for="fax" class="col-sm-3 col-form-label">Fax Number</label>
                         <div class="col-sm-9">
-                            <input type="number" name="fax_number" class="form-control" id="fax">
+                            <input type="tel" name="fax_number" class="form-control" id="fax">
                         </div>
                     </div>
 
@@ -220,7 +211,7 @@
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                    <button type="submit" class="btn btn-primary"> Save</button>
+                    <button type="submit" class="btn btn-primary" value="Save" name="action"> Save</button>
                 </div>
             </div>
         </div>

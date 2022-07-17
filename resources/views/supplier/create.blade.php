@@ -33,7 +33,7 @@
                             <a class="nav-link" href="#">New</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href=" {{ url('/supplier') }} ">Close</a>
+                            <a class="nav-link" href=" {{ route('home') }} ">Close</a>
                         </li>
                     </ul>
                 </div>
@@ -52,7 +52,7 @@
             </ul>
         </div>
         @endif
-        <form action=" {{ route('supplier.store') }} " method="POST">
+        <form action=" {{ route('supplier.create') }} " method="POST">
             @csrf
             <div class="row">
                 <div class="col">
@@ -74,12 +74,6 @@
                         <label for="lastname" class="col-sm-3 col-form-label">Last Name</label>
                         <div class="col-sm-9">
                             <input type="text" name="last_name" class="form-control" id="lastname">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="job" class="col-sm-3 col-form-label">Job Title</label>
-                        <div class="col-sm-9">
-                            <input type="text" name="job_title" class="form-control" id="jobTitle">
                         </div>
                     </div>
                     <br>
@@ -172,7 +166,7 @@
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary"> Save</button>
+                <button type="submit" class="btn btn-primary" name='action' value="Save" > Save</button>
             </div>
         </form>
     </div>

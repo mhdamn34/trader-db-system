@@ -50,7 +50,7 @@
             </ul>
         </div>
         @endif
-        <form action=" {{ route('customer.store') }} " method="POST">
+        <form action=" {{ route('customer.create') }} " method="POST">
             @csrf
             <div class="row">
                 <div class="col">
@@ -65,19 +65,19 @@
                     <div class="row mb-3">
                         <label for="firstname" class="col-sm-3 col-form-label">First Name</label>
                         <div class="col-sm-9">
-                            <input type="text" name="first_name" class="form-control" id="firstname">
+                            <input type="text" name="first_name" class="form-control" id="firstname" required>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="lastname" class="col-sm-3 col-form-label">Last Name</label>
                         <div class="col-sm-9">
-                            <input type="text" name="last_name" class="form-control" id="lastname">
+                            <input type="text" name="last_name" class="form-control" id="lastname" required>
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="job" class="col-sm-3 col-form-label">Job Title</label>
+                        <label for="job" class="col-sm-3 col-form-label">Contact Name</label>
                         <div class="col-sm-9">
-                            <input type="text" name="job_title" class="form-control" id="jobTitle">
+                            <input type="text" name="contact" class="form-control" id="jobTitle" required>
                         </div>
                     </div>
                     <br>
@@ -97,7 +97,7 @@
                     <div class="row mb-3">
                         <label for="mobilephone" class="col-sm-3 col-form-label">Mobile Phone</label>
                         <div class="col-sm-9">
-                            <input type="text" name="mobile_phone" class="form-control" id="mobile">
+                            <input type="text" name="mobile_phone" class="form-control" id="mobile" required>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -111,31 +111,31 @@
                     <div class="row mb-3">
                         <label for="street" class="col-sm-3 col-form-label"> Address</label>
                         <div class="col-sm-9">
-                            <input type="text" name="address" class="form-control" id="street">
+                            <input type="text" name="address" class="form-control" id="street" required>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="city" class="col-sm-3 col-form-label">City</label>
                         <div class="col-sm-9">
-                            <input type="text" name="city" class="form-control" id="city">
+                            <input type="text" name="city" class="form-control" id="city" required>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="state" class="col-sm-3 col-form-label">State/Province</label>
                         <div class="col-sm-9">
-                            <input type="text" name="state" class="form-control" id="state">
+                            <input type="text" name="state" class="form-control" id="state" required>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="zip" class="col-sm-3 col-form-label">Zip/Postal Code</label>
                         <div class="col-sm-9">
-                            <input type="text" name="postal_code" class="form-control" id="zip">
+                            <input type="text" name="postal_code" class="form-control" id="zip" required>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="country" class="col-sm-3 col-form-label">Country/Region</label>
                         <div class="col-sm-8">
-                            <input type="text" name="country" class="form-control" id="country">
+                            <input type="text" name="country" class="form-control" id="country" required>
                         </div>
                     </div>
                 </div>
@@ -151,7 +151,7 @@
                                 <div class="row mb-3">
                                     <label for="email" class="col-sm-4 col-form-label">Email</label>
                                     <div class="col-sm-12">
-                                        <input type="text" name="email_address" class="form-control" id="email">
+                                        <input type="text" name="email_address" class="form-control" id="email" required>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -165,13 +165,13 @@
                     </div>
                     <div class="input-group">
                         <label for="notes" class="col-sm-2 col-form-label" >Notes</label>
-                        <textarea type="text" name="notes" class="form-control" aria-label="With textarea" style="height: 200px;"></textarea>
+                        <textarea type="text" name="notes" class="form-control" aria-label="With textarea" style="height: 200px;" required></textarea>
                     </div>
                 </div>
 
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary"> Save</button>
+                <button type="submit" class="btn btn-primary" value="Save" name="action"> Save</button>
             </div>
         </form>
     </div>

@@ -17,7 +17,7 @@
             </ul>
         </div>
         @endif
-        <form action="{{ route('product.store') }}" method="POST">
+        <form action="{{ route('product.create') }}" method="POST">
             @csrf
             <div class="row">
                 <div class="col">
@@ -36,7 +36,11 @@
                     <div class="row mb-3">
                         <label for="category" class="col-sm-3 col-form-label">Category</label>
                         <div class="col-sm-9">
-                            <input type="text" name="category" class="form-control" id="category" placeholder="(Required)">
+                            <select class="form-select" id="ridername" name="category">
+                                <option value="1"> Category A</option>
+                                <option value="2"> Category B</option>
+                                <option value="3"> Category B</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -44,10 +48,9 @@
                         <div class="col-sm-9">
                             <!-- <input type="text" name="supplier" class="form-control" id="supplier"> -->
                             <div class="input-group mb-3" class="form-group">
-                                <select class="form-select" id="ridername" name="supplier_id">
-                                    @foreach ($suppliers as $supplier)
-                                    <option value=" {{ $supplier->id }} "> {{ $supplier -> company}}</option>
-                                    @endforeach
+                                <select class="form-select" id="ridername" name="supplier">
+                                    <option value="1"> Supplier A</option>
+                                    <option value="2"> Supplier B</option>
                                 </select>
                             </div>
                         </div>
@@ -65,49 +68,29 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="standardcost" class="col-sm-3 col-form-label">Standard Cost</label>
-                        <div class="col-sm-9">
-                            <input type="text" name="standard_cost" class="form-control" id="standardcost" placeholder="RM0.00">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
                         <label for="listprice" class="col-sm-3 col-form-label">List Price</label>
                         <div class="col-sm-9">
                             <input type="text" name="list_price" class="form-control" id="listprice" placeholder="RM0.00">
                         </div>
                     </div>
-                    <div class="row mb-3">
+                    <!-- <div class="row mb-3">
                         <label for="reorderlevel" class="col-sm-3 col-form-label">Reorder Level</label>
                         <div class="col-sm-9">
                             <input type="text" name="reorder_level" class="form-control" id="reorderlevel" placeholder="(Required)">
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row mb-3">
-                        <label for="targetlevel" class="col-sm-3 col-form-label">Target Level</label>
+                        <label for="discontinued" class="col-sm-3 col-form-label">Discontinued</label>
                         <div class="col-sm-9">
-                            <input type="text" name="target_level" class="form-control" id="targetlevel" placeholder="(Required)">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="targetlevel" class="col-sm-3 col-form-label">Default Reorder Quantity</label>
-                        <div class="col-sm-9">
-                            <input type="text" name="default_reorder" class="form-control" id="defaultreorder" placeholder="(Required)">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="targetlevel" class="col-sm-3 col-form-label">Discontinued</label>
-                        <div class="col-sm-9">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="discontinued" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault"></label>
-                                </input>
-
-                            </div>
+                            <select class="form-select" id="ridername" name="discontinued">
+                                <option value="1"> Yes</option>
+                                <option value="2"> No</option>
+                            </select>
                         </div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                    <button type="submit" class="btn btn-primary"> Save</button>
+                    <button type="submit" class="btn btn-primary" value="Save" name="action"> Save</button>
                     <a href=" {{ route('product.index') }}" class="btn btn-secondary">Cancel</a>
                 </div>
         </form>

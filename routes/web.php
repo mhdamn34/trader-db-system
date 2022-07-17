@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/login', [\App\Http\Controllers\AuthController::class, 'login'])->name('login');
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'home'])->name('home');
 
 Route::group([
@@ -26,6 +27,7 @@ Route::group([
 ], function(){
         Route::get('/index', [\App\Http\Controllers\CustomerController::class, 'index'])->name('index');
         Route::get('/create', [\App\Http\Controllers\CustomerController::class, 'create'])->name('create');
+        Route::post('/create', [\App\Http\Controllers\CustomerController::class, 'create'])->name('create');
         Route::get('/edit', [\App\Http\Controllers\CustomerController::class, 'edit'])->name('edit');
         Route::get('/show', [\App\Http\Controllers\CustomerController::class, 'show'])->name('show');
 
@@ -59,6 +61,7 @@ Route::group([
 ], function(){
         Route::get('/index', [\App\Http\Controllers\ProductController::class, 'index'])->name('index');
         Route::get('/create', [\App\Http\Controllers\ProductController::class, 'create'])->name('create');
+        Route::post('/create', [\App\Http\Controllers\ProductController::class, 'create'])->name('create');
         Route::get('/edit', [\App\Http\Controllers\ProductController::class, 'edit'])->name('edit');
         Route::get('/show', [\App\Http\Controllers\ProductController::class, 'show'])->name('show');
 
@@ -70,6 +73,7 @@ Route::group([
 ], function(){
         Route::get('/index', [\App\Http\Controllers\ShipperController::class, 'index'])->name('index');
         Route::get('/create', [\App\Http\Controllers\ShipperController::class, 'create'])->name('create');
+        Route::post('/create', [\App\Http\Controllers\ShipperController::class, 'create'])->name('create');
         Route::get('/edit', [\App\Http\Controllers\ShipperController::class, 'edit'])->name('edit');
         Route::get('/show', [\App\Http\Controllers\ShipperController::class, 'show'])->name('show');
 
@@ -81,6 +85,7 @@ Route::group([
 ], function(){
         Route::get('/index', [\App\Http\Controllers\SupplierController::class, 'index'])->name('index');
         Route::get('/create', [\App\Http\Controllers\SupplierController::class, 'create'])->name('create');
+        Route::post('/create', [\App\Http\Controllers\SupplierController::class, 'create'])->name('create');
         Route::get('/edit', [\App\Http\Controllers\SupplierController::class, 'edit'])->name('edit');
         Route::get('/show', [\App\Http\Controllers\SupplierController::class, 'show'])->name('show');
 

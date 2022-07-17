@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('company_name');
             $table->string('address');
             $table->string('city');
-            $table->string('region');
             $table->string('postal_code');
             $table->string('country');
             $table->string('phone');

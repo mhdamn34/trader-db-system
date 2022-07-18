@@ -14,12 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/login', [\App\Http\Controllers\AuthController::class, 'login'])->name('login');
+Route::get('/', [\App\Http\Controllers\AuthController::class, 'login'])->name('login');
+Route::get('/register', [\App\Http\Controllers\AuthController::class, 'register'])->name('register');
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'home'])->name('home');
+
+Route::group([
+    'prefix' => 'dashboard',
+    'as' => 'dashboard.'
+], function(){
+        Route::get('/', [\App\Http\Controllers\DashboardController::class, 'dashboard'])->name('dashboard');
+
+});
 
 Route::group([
     'prefix' => 'customer',
@@ -28,8 +37,10 @@ Route::group([
         Route::get('/index', [\App\Http\Controllers\CustomerController::class, 'index'])->name('index');
         Route::get('/create', [\App\Http\Controllers\CustomerController::class, 'create'])->name('create');
         Route::post('/create', [\App\Http\Controllers\CustomerController::class, 'create'])->name('create');
-        Route::get('/edit', [\App\Http\Controllers\CustomerController::class, 'edit'])->name('edit');
+        Route::get('/edit/{customer_id}', [\App\Http\Controllers\CustomerController::class, 'edit'])->name('edit');
+        Route::post('/update/{customer_id}', [\App\Http\Controllers\CustomerController::class, 'update'])->name('update');
         Route::get('/show', [\App\Http\Controllers\CustomerController::class, 'show'])->name('show');
+        Route::delete('/{customer_id}', [\App\Http\Controllers\CustomerController::class, 'delete'])->name('delete');
 
 });
 
@@ -39,6 +50,7 @@ Route::group([
 ], function(){
         Route::get('/index', [\App\Http\Controllers\OrderController::class, 'index'])->name('index');
         Route::get('/create', [\App\Http\Controllers\OrderController::class, 'create'])->name('create');
+        Route::post('/create', [\App\Http\Controllers\OrderController::class, 'create'])->name('create');
         Route::get('/edit', [\App\Http\Controllers\OrderController::class, 'edit'])->name('edit');
         Route::get('/show', [\App\Http\Controllers\CustomerController::class, 'show'])->name('show');
 
@@ -50,8 +62,12 @@ Route::group([
 ], function(){
         Route::get('/index', [\App\Http\Controllers\EmployeeController::class, 'index'])->name('index');
         Route::get('/create', [\App\Http\Controllers\EmployeeController::class, 'create'])->name('create');
-        Route::get('/edit', [\App\Http\Controllers\EmployeeController::class, 'edit'])->name('edit');
+        Route::post('/create', [\App\Http\Controllers\EmployeeController::class, 'create'])->name('create');
+        Route::get('/edit/{employee_id}', [\App\Http\Controllers\EmployeeController::class, 'edit'])->name('edit');
+        Route::post('/update/{employee_id}', [\App\Http\Controllers\EmployeeController::class, 'update'])->name('update');
         Route::get('/show', [\App\Http\Controllers\EmployeeController::class, 'show'])->name('show');
+        Route::delete('/{employee_id}', [\App\Http\Controllers\EmployeeController::class, 'delete'])->name('delete');
+
 
 });
 
@@ -74,8 +90,10 @@ Route::group([
         Route::get('/index', [\App\Http\Controllers\ShipperController::class, 'index'])->name('index');
         Route::get('/create', [\App\Http\Controllers\ShipperController::class, 'create'])->name('create');
         Route::post('/create', [\App\Http\Controllers\ShipperController::class, 'create'])->name('create');
-        Route::get('/edit', [\App\Http\Controllers\ShipperController::class, 'edit'])->name('edit');
+        Route::get('/edit/{shipper_id}', [\App\Http\Controllers\ShipperController::class, 'edit'])->name('edit');
+        Route::post('/update/{shipper_id}', [\App\Http\Controllers\ShipperController::class, 'update'])->name('update');
         Route::get('/show', [\App\Http\Controllers\ShipperController::class, 'show'])->name('show');
+        Route::delete('/{shipper_id}', [\App\Http\Controllers\ShipperController::class, 'delete'])->name('delete');
 
 });
 

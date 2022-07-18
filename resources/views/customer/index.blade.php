@@ -47,13 +47,13 @@
                         <td>{{ $cust->phone }}</td>
                         <td>{{ $cust->notes }}</td>
                         <td>
-                            <form action="#" method="POST">
+                            <form action="{{ route('customer.delete',['customer_id' => $cust->id]) }}" method="POST">
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a class="btn btn-primary" href="# " role="button">Update</a>
+                                    <a class="btn btn-primary" href="{{ route('customer.edit', ['customer_id' => $cust->id]) }}" role="button">Update</a>
                                     <!-- <a class="btn btn-info" href="#" role="button">View</a> -->
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                    <button type="submit" class="btn btn-danger" value="Delete" name="action">Delete</button>
                                 </div>
                             </form>
                         </td>

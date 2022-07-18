@@ -9,16 +9,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                        <a href="{{ route('dashboard.dashboard') }}" class="nav-link px-0 align-middle">
                             <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
-                        <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                        <!-- <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                             <li class="w-100">
                                 <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Pie Chart</a>
                             </li>
-                            <!-- <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
-                            </li> -->
-                        </ul>
+                        </ul> -->
                     </li>
                     <li>
                         <a href="#ordermenu" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
@@ -57,6 +54,11 @@
                     <li>
                         <a href="{{ route('supplier.index') }}" class="nav-link px-0 align-middle">
                             <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Supplier</span> 
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('employee.index') }}" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Employee</span> 
                         </a>
                     </li>
                 </ul>

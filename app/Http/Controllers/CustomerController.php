@@ -26,6 +26,7 @@ class CustomerController extends Controller
                 'company_name' => $request->company,
                 'address' => $request->address,
                 'city' => $request->city,
+                'state' => $request->state,
                 'postal_code' => $request->postal_code,
                 'country' => $request->country,
                 'phone' => $request->mobile_phone,
@@ -40,7 +41,41 @@ class CustomerController extends Controller
 
     }
 
-    public function update(){
+    public function edit(Request $request, $customer_id){
 
+        $customer = Customer::find($customer_id);
+
+        return view('customer.edit',compact('customer'));
+    }
+
+    public function update(Request $request, $customer_id){
+
+        $customer = Customer::find($customer_id);
+
+        $update = Customer::where('id', $customer_id)->update([
+            
+            'company_name' => $request->company,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,       
+            'email' => $request->email_address,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'city' => $request->city,
+            'state' => $request->state,
+            'postal_code' => $request->postal_code,
+            'country' => $request->country,
+            'notes' => $request->notes
+            
+        ]);
+
+        return redirect()->route('customer.index', compact('customer'))
+        ->with('success', 'Customer update successfully');
+    }
+
+    public function delete($customer_id){
+
+        $customer = Customer::where('id',$customer_id)->delete();
+
+        return redirect()->route('customer.index',compact('customer'))->with('success','customer deleted');
     }
 }

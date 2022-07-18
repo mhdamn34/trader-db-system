@@ -8,8 +8,8 @@
         <div class="row">
             <div class="col">
                 <a href="{{ route('shipper.create') }}" class="btn btn-primary"> New Shipper</a>
-                <a href="#" class="btn btn-primary"> Collect Data via E-mail</a>
-                <a href="#" class="btn btn-primary"> Add From Outlook</a>
+                <!-- <a href="#" class="btn btn-primary"> Collect Data via E-mail</a>
+                <a href="#" class="btn btn-primary"> Add From Outlook</a> -->
                 <a href="#" class="btn btn-primary"> E-mail List</a>
             </div>
             <div class="col d-flex justify-content-end">
@@ -48,9 +48,9 @@
                     <td>{{$shipper->phone}}</td>
                     <td>{{$shipper->job_title}}</td>
                     <td>
-                        <form action="#" method="POST">
+                        <form action="{{ route('shipper.delete', ['shipper_id' => $shipper -> id]) }}" method="POST">
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <a class="btn btn-primary" href="# " role="button">Update</a>
+                                <a class="btn btn-primary" href="{{ route('shipper.edit', ['shipper_id' => $shipper -> id]) }}" role="button">Update</a>
                                 <!-- <a class="btn btn-info" href=" {{ route('shipper.show', $shipper->id) }} " role="button">View</a> -->
                                 @csrf
                                 @method('DELETE')

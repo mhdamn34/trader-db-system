@@ -12,4 +12,9 @@ class Customer extends Model
     protected $fillable = ['*'];
 
     // public $timestamps = false;
+
+    public function order(){
+
+        return $this->hasMany(Order::class);
+    }
 }

@@ -4,7 +4,7 @@
 
 <div class="card">
     <div class="card-header">
-        <h3>Product List</h3>
+        <h3>Supplier List</h3>
         <div class="row">
             <div class="col">
                 <a href="{{ route('supplier.create') }}" class="btn btn-primary"> Add Supplier</a>
@@ -47,7 +47,7 @@
                     <td>
                         <form action="#" method="POST">
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <a class="btn btn-primary" href="#" role="button">Update</a>
+                                <a class="btn btn-primary" href="" role="button">Update</a>
                                 <!-- <a class="btn btn-info" href="#" role="button">View</a> -->
                                 @csrf
                                 @method('DELETE')

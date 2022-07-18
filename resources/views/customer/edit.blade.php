@@ -3,16 +3,15 @@
 @section('content')
 
 <div class="card">
-    <form action=" {{ route('customer.update', $customer->id) }} " method="POST">
+    <form action="{{ route('customer.update', ['customer_id' => $customer->id]) }}" method="post">
         <div class="card-header">
             <h4>Update Customer Details</h4>
 
             @csrf
-            @method('PATCH')
             <div class="row">
                 <div class="col d-flex justify-content-end">
                     <a href=" {{ route('customer.index') }}" class="btn btn-secondary"> Cancel</a>
-                    <button type="submit" class="btn btn-primary"> Save </button>
+                    <button type="submit" class="btn btn-primary" value="Save" name="action"> Save </button>
 
                 </div>
             </div>
@@ -35,7 +34,7 @@
                     <div class="row mb-3">
                         <label for="company" class="col-sm-3 col-form-label">Company</label>
                         <div class="col-sm-9">
-                            <input type="text" name="company" class="form-control" value="{{ $customer->company}}">
+                            <input type="text" name="company" class="form-control" value="{{ $customer->company_name}}">
                         </div>
                     </div>
                     <br>
@@ -52,20 +51,8 @@
                             <input type="text" name="last_name" class="form-control" id="lastname" value="{{ $customer->last_name}}">
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <label for="job" class="col-sm-3 col-form-label">Job Title</label>
-                        <div class="col-sm-9">
-                            <input type="text" name="job_title" class="form-control" id="jobTitle" value="{{ $customer->job_title}}">
-                        </div>
-                    </div>
                     <br>
                     <h5>Phone Numbers</h5>
-                    <div class="row mb-3">
-                        <label for="businessphone" class="col-sm-3 col-form-label">Business Phone</label>
-                        <div class="col-sm-9">
-                            <input type="text" name="business_phone" class="form-control" id="business" value="{{ $customer->business_phone}}">
-                        </div>
-                    </div>
                     <div class="row mb-3">
                         <label for="mobilephone" class="col-sm-3 col-form-label">Home Phone</label>
                         <div class="col-sm-9">
@@ -75,13 +62,13 @@
                     <div class="row mb-3">
                         <label for="mobilephone" class="col-sm-3 col-form-label">Mobile Phone</label>
                         <div class="col-sm-9">
-                            <input type="text" name="mobile_phone" class="form-control" id="mobile" value="{{ $customer->mobile_phone}}">
+                            <input type="text" name="phone" class="form-control" id="mobile" value="{{ $customer->phone}}">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="fax" class="col-sm-3 col-form-label">Fax Number</label>
                         <div class="col-sm-9">
-                            <input type="text" name="fax_number" class="form-control" id="fax" value="{{ $customer->fax_number}}">
+                            <input type="text" name="fax_number" class="form-control" id="fax" value="">
                         </div>
                     </div>
                     <br>
@@ -121,13 +108,13 @@
                     <div class="row mb-3">
                         <label for="email" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
-                            <input type="text" name="email_address" class="form-control" id="email" value="{{ $customer->email_address}}">
+                            <input type="text" name="email_address" class="form-control" id="email" value="{{ $customer->email}}">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="web" class="col-sm-2 col-form-label">Web Page</label>
                         <div class="col-sm-10">
-                            <input type="text" name="web_page" class="form-control" id="web" value="{{ $customer->web_page}}">
+                            <input type="text" name="web_page" class="form-control" id="web" value="">
                         </div>
                     </div>
                     <div class="row mb-3">

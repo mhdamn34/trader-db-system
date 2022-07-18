@@ -4,7 +4,7 @@
 
 <div class="card">
     <div class="card-header">
-        <h5>Untitled</h5>
+        <h5>Employee Details</h5>
 
         <div class="row">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -28,31 +28,20 @@
 
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Create Outlook Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Save and New</a>
-                        </li>
-                        <li class="nav-item">
-                        <a href=" {{ url('/employee') }} " class="btn btn-secondary">Close</a>
+                            <a href="{{ route('employee.index') }}" class="btn btn-secondary">Close</a>
                         </li>
                     </ul>
                 </div>
             </nav>
             <thead>
-                
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">General</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Order</a>
-            </li>
 
-        </ul>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">General</a>
+                    </li>
+                </ul>
 
-
-    </thead>
+            </thead>
 
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -103,7 +92,7 @@
             </ul>
         </div>
         @endif
-        <form action=" {{ route('employee.store') }} " method="POST">
+        <form action=" {{ route('employee.create') }} " method="POST">
             @csrf
             <div class="row">
                 <div class="col">
@@ -136,9 +125,9 @@
                     <br>
                     <h5>Phone Numbers</h5>
                     <div class="row mb-3">
-                        <label for="businessphone" class="col-sm-3 col-form-label">Business Phone</label>
+                        <label for="businessphone" class="col-sm-3 col-form-label">Hire date</label>
                         <div class="col-sm-9">
-                            <input type="text" name="business_phone" class="form-control" id="business">
+                            <input type="date" name="hire_date" class="form-control" id="business">
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -168,9 +157,9 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="city" class="col-sm-3 col-form-label">City</label>
+                        <label for="bod" class="col-sm-3 col-form-label">Birth Of Date</label>
                         <div class="col-sm-9">
-                            <input type="text" name="city" class="form-control" id="city">
+                            <input type="date" name="bod" class="form-control" id="bod">
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -220,7 +209,7 @@
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary"> Save</button>
+                <button type="submit" class="btn btn-primary" name="action" value="Save"> Save</button>
             </div>
         </form>
     </div>

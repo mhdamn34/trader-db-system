@@ -4,173 +4,167 @@
 
 <div class="card">
     <div class="card-header">
-        <h3>Order # (New)</h3>
-    </div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a class="navbar-brand" href="#">Hidden brand</a>
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Status :</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Create Invoice</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link ">Ship Order</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link ">Complete Order</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link ">Delete Order</a>
-                    </li>
-                </ul>
-                <form class="d-flex">
-
-                    <a button class="btn btn-outline-success" href="{{ url('/orders') }} " type="submit">Close</a></button>
-                </form>
-
-            </div>
+        <h5>Create New Order</h5>
+        <div class="row">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">E-mail</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('order.index') }}">Cancel</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         </div>
-    </nav>
-    <nav>
-        <div class="card">
+    </div>
+    <div class="card-body">
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+        <form action=" {{ route('order.create') }} " method="POST">
+            @csrf
+            <h5>Details</h5>
             <div class="row">
                 <div class="col">
-                    <div class="mb-3 row">
-                        <label for="customer" class="col-sm-5 col-form-label">Customer</label>
-                        <div class="col-sm-7">
-
-
-                            <div class="col">
-                                <div class="input-group mb-3" class="form-group">
-
-                                    <select class="form-select" id="company" name="customer_id">
-                                        @foreach ($customers as $customer)
-                                        <option value=" {{ $customer->id }} "> {{ $customer ->company}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3 row">
-                        <label for="customer" class="col-sm-5 col-form-label">E-mail Address</label>
-                        <div class="col-sm-7">
-                            <input type="customer" class="form-control" id="customer">
+                    <div class="row mb-3">
+                        <label for="order_name" class="col-sm-3 col-form-label">Order Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="order_name" class="form-control" id="order_name">
                         </div>
                     </div>
-
+                    <div class="row mb-3">
+                        <label for="status" class="col-sm-3 col-form-label">Status</label>
+                        <div class="col-sm-9">
+                            <select type="text" name="status" class="form-control" id="status">
+                                @foreach($statusOrder as $s)
+                                    <option value="{{ $s -> id }}">{{ $s->status }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="shipper" class="col-sm-3 col-form-label">Shipper</label>
+                        <div class="col-sm-9">
+                            <select type="text" name="shipper" class="form-control" id="shipper">
+                                @foreach($shipper as $s)
+                                    <option value="{{ $s->id }}">{{ $s->first_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="employee" class="col-sm-3 col-form-label">Employee</label>
+                        <div class="col-sm-9">
+                            <select type="text" name="employee" class="form-control" id="employee">
+                                @foreach($employee as $e)
+                                    <option value="{{ $e->id }}">{{ $e->first_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="customer" class="col-sm-3 col-form-label">Customer</label>
+                        <div class="col-sm-9">
+                            <select type="text" name="customer" class="form-control" id="customer">
+                                @foreach($customer as $c)
+                                    <option value="{{ $c->id }}">{{ $c->first_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <h5>Date</h5>
+                    <div class="row mb-3">
+                        <label for="order_date" class="col-sm-3 col-form-label">Order date</label>
+                        <div class="col-sm-9">
+                            <input type="date" name="order_date" class="form-control" id="order_date">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="shipped_date" class="col-sm-3 col-form-label">Shipped Date</label>
+                        <div class="col-sm-9">
+                            <input type="date" name="shipped_date" class="form-control" id="shipped_date">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="paid_date" class="col-sm-3 col-form-label">Paid Date</label>
+                        <div class="col-sm-9">
+                            <input type="date" name="paid_date" class="form-control" id="paid_date" required>
+                        </div>
+                    </div>
+                    <h5>Address</h5>
+                    <div class="row mb-3">
+                        <label for="ship_name" class="col-sm-3 col-form-label">Ship Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="ship_name" class="form-control" id="ship_name" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="address" class="col-sm-3 col-form-label">Ship Address</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="address" class="form-control" id="address" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="city" class="col-sm-3 col-form-label">Ship City</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="city" class="form-control" id="city" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="state" class="col-sm-3 col-form-label">Ship State</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="state" class="form-control" id="state" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="postal_code" class="col-sm-3 col-form-label">Ship Postal Code</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="postal_code" class="form-control" id="postal_code" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="country" class="col-sm-3 col-form-label">Country</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="country" class="form-control" id="country" required>
+                        </div>
+                    </div>
                 </div>
-
                 <div class="col">
-                    <div class="mb-3 row">
-                        <label for="customer" class="col-sm-5 col-form-label">Salesperson</label>
-                        <div class="col-sm-7">
-                            <div class="col">
-                                <div class="input-group mb-3" class="form-group">
-                                    <select class="form-select" id="createdSelect">
-                                        <option selected> </option>
-                                        <option value="1">Andrew Cencin</option>
-                                        <option value="2">Anne Hellung-Larsen</option>
-                                        <option value="3">Jan Kotas</option>
-                                        <option value="4">Laura Giussani</option>
-                                        <option value="5">Mariya Sergienko</option>
-                                        <option value="6">Michael Neiper</option>
-                                        <option value="7">Nancy Freehafer</option>
-                                        <option value="8">Robert Zare</option>
-                                        <option value="9">Steven Thorpe</option>
-
-
-                                    </select>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col" style="padding: 30px;">
+                                <div class="row">
+                                    <label for="fee" class="col-sm-4 col-form-label">Shipping Fee</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" name="fee" class="form-control" id="fee">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="mb-3 row">
-                        <label for="customer" class="col-sm-5 col-form-label">Order Date</label>
-                        <div class="col-sm-7">
-                            <input type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                        </div>
+                    <div class="input-group">
+                        <label for="notes" class="col-sm-2 col-form-label" >Notes</label>
+                        <textarea type="text" name="notes" class="form-control" aria-label="With textarea" style="height: 200px;" required></textarea>
                     </div>
-
                 </div>
+
             </div>
-        </div>
-    </nav>
-
-
-    <thead>
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Order Details</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Shipping Information</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Payment Information</a>
-            </li>
-
-        </ul>
-
-    </thead>
-
-
-
-</div>
-
-<body>
-    <div class="card">
-        <div class="card-body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>*</th>
-                        <th>Product</th>
-                        <th>Qty</th>
-                        <th>Unit Price</th>
-                        <th>Discount</th>
-                        <th>Total Price</th>
-                        <th>Status</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-
-
-                    <tr>
-                        <th></th>
-                        <!-- <th>Total</th> -->
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-
-                    </tr>
-
-                </tbody>
-
-
-            </table>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-            <button type="submit" class="btn btn-primary"> Save</button>
-        </div>
-
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <button type="submit" class="btn btn-primary" value="Save" name="action"> Save</button>
+            </div>
+        </form>
     </div>
 
-</body>
-
-
-
-
+</div>
 @endsection

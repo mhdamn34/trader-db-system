@@ -1,30 +1,36 @@
-<!doctype html>
-<html lang="{{ str_replace('', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- Title -->
-    <title>Laravel</title>
-    <!-- Style -->
-    @include('layouts.shared.style')
-
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard - Product Management System</title>
+        <!-- style -->
+        @include('layouts.shared.style')
 </head>
 
-<body class="hold-transition sidebar-mini">
-    <!-- Wrapper -->
-    <div id="app" class="wrapper">
+<body class="sb-nav-fixed">
 
-        <!-- navbar temp -->
-        @include('layouts.main.navbar')
-        
-        <!-- sidebar and main (yield)-->
-        @include('layouts.main.sidebar')
-        
+    <!-- navbar -->
+    @include('layouts.main.navbar')
+
+    <div id="layoutSidenav">
+
+        <!-- sidebar -->
+        @include('layouts.main.side')
+
+        <div id="layoutSidenav_content">
+            <main>
+                @yield('content')
+            </main>
+
+            <!-- footer -->
+            @include('layouts.main.footer')
+        </div>
     </div>
-
     <!-- script -->
     @include('layouts.shared.script')
 </body>

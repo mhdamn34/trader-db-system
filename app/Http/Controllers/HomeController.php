@@ -21,4 +21,9 @@ class HomeController extends Controller
 
         return view('home.home',compact('orders','customers','suppliers','employees'));
     }
+
+    public function index(){
+
+        return view('home.index');
+    }
 }

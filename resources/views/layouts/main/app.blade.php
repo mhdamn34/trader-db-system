@@ -20,7 +20,7 @@
     <div id="layoutSidenav">
 
         <!-- sidebar -->
-        @include('layouts.main.side')
+        @include('layouts.main.sidebar')
 
         <div id="layoutSidenav_content">
             <main>

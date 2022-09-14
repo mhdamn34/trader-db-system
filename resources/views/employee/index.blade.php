@@ -35,7 +35,6 @@
     </div>
 
     <div class="card-body">
-
         @if ($message = Session::get('success'))
         <div class="alert alert-success">
 
@@ -53,7 +52,7 @@
                     <th scope="col">Company</th>
                     <th scope="col"> Action</th>
                 </tr>
-
+            </thead>
             <tbody>
                 @foreach($employees as $employee)
                 <tr>
@@ -75,9 +74,8 @@
                     </td>
                 </tr>
                 @endforeach
-
-                </thead>
             </tbody>
+        </table>
     </div>
 </div>
 

@@ -18,7 +18,6 @@
         </div>
     </div>
 
-    <br>
     <div class="card-body">
         @if ($message = Session::get('success'))
         <div class="alert alert-success">
@@ -27,7 +26,7 @@
 
         </div>
         @endif
-        <table class="table table-bordered mt-3">
+        <table class="table table-bordered">
             <thead class="table-primary">
                 <tr>
                     <th scope="col">ID</th>
@@ -37,7 +36,7 @@
                     <th scope="col">Job Title</th>
                     <th scope="col" width="200px"> Action</th>
                 </tr>
-
+            </thead>
             <tbody>
                 @foreach($shippers as $shipper)
 
@@ -59,11 +58,9 @@
                         </form>
                     </td>
                 </tr>
-
                 @endforeach
             </tbody>
-            </thead>
-
+        </table>
     </div>
 </div>
 @endsection

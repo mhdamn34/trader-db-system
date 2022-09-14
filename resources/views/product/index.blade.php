@@ -17,8 +17,8 @@
             </div>
         </div>
     </div>
-    <div class="card-body">
 
+    <div class="card-body">
         @if ($message = Session::get('success'))
         <div class="alert alert-success">
 

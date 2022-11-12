@@ -4,6 +4,10 @@
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 
+<script src="{{ asset('assets/js/chart-area-demo.js') }}"></script>
+<script src="{{ asset('assets/js/chart-bar-demo.js') }}"></script>
+
+
 <script>
     // Simple Datatable
     let table_data = document.querySelector('.table-data');

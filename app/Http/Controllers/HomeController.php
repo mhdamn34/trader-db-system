@@ -7,11 +7,12 @@ use App\Models\Employee;
 use App\Models\Order;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
     public function home(){
-
+        
         $orders = Order::select('*')->count();
         $customers = Customer::select('*')->count();
         $suppliers = Supplier::select('*')->count();

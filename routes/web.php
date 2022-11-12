@@ -19,7 +19,12 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [\App\Http\Controllers\AuthController::class, 'login'])->name('login');
+Route::post('/', [\App\Http\Controllers\AuthController::class, 'loginAuth'])->name('loginAuth');
+
 Route::get('/register', [\App\Http\Controllers\AuthController::class, 'register'])->name('register');
+Route::post('/register', [\App\Http\Controllers\AuthController::class, 'registerAuth'])->name('registerAuth');
+
+Route::get('/forgot-password', [\App\Http\Controllers\AuthController::class, 'forgotPassword'])->name('forgotPassword');
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'home'])->name('home');
 

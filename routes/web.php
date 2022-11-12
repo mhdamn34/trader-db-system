@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,14 @@ Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register
 Route::get('/forgot-password', [\App\Http\Controllers\AuthController::class, 'forgotPassword'])->name('forgotPassword');
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'home'])->name('home');
+
+Route::group([
+    'prefix' => 'user',
+    'as' => 'user.'
+],function(){
+    Route::get('/',[\App\Http\Controllers\UserController::class, 'index'])->name('setting');
+    Route::post('/{user_id}',[\App\Http\Controllers\UserController::class, 'update'])->name('update');
+});
 
 Route::group([
     'prefix' => 'dashboard',

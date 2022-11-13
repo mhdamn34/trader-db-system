@@ -13,7 +13,7 @@
         @include('layouts.shared.style')
     </head>
 
-    <body class="bg-primary">
+    <body class="bg-secondary">
         <!-- auth login, sign up -->
         @yield('auth')
         

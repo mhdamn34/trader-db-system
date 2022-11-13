@@ -9,6 +9,8 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $dates = ['order_date','shipped_date','paid_date'];
+
     public function orderstatus(){
 
         return $this->belongsTo(OrderStatus::class, 'status_id');

@@ -13,6 +13,13 @@
             </div>
         </div>
         <div class="col-md border-right">
+
+            @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+            @endif
+
             <div class="p-3 py-5">
                 <form action="{{ route('user.update', ['user_id' => $users->id]) }}" method="post">
                     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -57,7 +64,7 @@
                             <label class="labels">State</label>
                             <select class="form-select" value="" id="state" name="state">Select State
                                 @foreach($states as $state)
-                                <option value="{{ $state->state_code }}">
+                                <option value="{{ $state->state_code }}" @if($users->state == $state->state_code) selected @endif>
                                     {{ $state->state_name }}
                                 </option>
                                 @endforeach

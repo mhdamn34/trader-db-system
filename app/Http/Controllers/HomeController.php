@@ -11,20 +11,27 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    public function home(){
-        
-        $orders = Order::select('*')->count();
-        $customers = Customer::select('*')->count();
-        $suppliers = Supplier::select('*')->count();
-        $employees = Employee::select('*')->count();
-
-        // dd($orders);
-
-        return view('home.home',compact('orders','customers','suppliers','employees'));
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 
-    public function index(){
+    public function home()
+    {
 
-        return view('home.index');
+        if (Auth::check()) {
+            //orders
+            $orderCount = Order::select('*')->count();
+            $orders = Order::select('*')->get();
+
+            $customers = Customer::select('*')->count();
+            $suppliers = Supplier::select('*')->count();
+            $employees = Employee::select('*')->count();
+
+
+            return view('home.home', compact('orderCount', 'customers', 'suppliers', 'employees', 'orders'));
+        }
+
+        return redirect()->route('login');
     }
 }
